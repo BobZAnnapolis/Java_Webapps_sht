@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <title>04 REGEX</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Ch 04 Regular Expressions" />
+	
+	<script type="text/javascript" src="../js/jquery_300_min.js"></script>
+	
+	<style>
+	
+	</style>
+	
+</head>
+ 
+<body> 
+
+	<h1>Ch 04. jQuery Regular Expressions</h1>
+
+	<div>
+		var regex=/great/;<br>
+		var string = "Regex is great!";<br>
+		
+		var result = string.match(regex);<br>
+		alert(result);<br><br><br>
+
+		string = "Regex is hard!";<br>
+		result = string.match(regex);<br>
+		alert(result);<br><br>
+
+		regex=/great/i;<br>
+		string = "Regex is GReaT!";<br>
+		result = string.match(regex);<br>
+		alert(result);<br>
+	</div>	
+	
+	<script>
+
+		var regex=/great/;
+		var string = "Regex is great!";
+		
+		var result = string.match(regex);
+		alert(result);
+
+		string = "Regex is hard!";
+		result = string.match(regex);
+		alert(result);
+
+		regex=/great/i;
+		string = "Regex is GREAT!";
+		result = string.match(regex);
+		alert(result);
+	</script>
+
+</body>
+	<hr />
+	<p><a href="../index.html">..HOME..</a></p>
+</html>

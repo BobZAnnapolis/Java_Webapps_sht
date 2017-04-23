@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;net.javavideotutorials.com.Vehicle&apos; to &apos;Runnable&apos;&#x0A;- Original project: &apos;Video9_Inheritance&apos;&#x0A;- Original element: &apos;net.javavideotutorials.com.Vehicle&apos;&#x0A;- Renamed element: &apos;net.javavideotutorials.com.Runnable&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Vehicle&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;net.javavideotutorials.com{Vehicle.java[Vehicle" matchStrategy="1" name="Runnable" qualified="false" references="true" similarDeclarations="false" stamp="1398477056879" textual="false" version="1.0"/>
+</session>

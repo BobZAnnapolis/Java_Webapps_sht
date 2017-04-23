@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;WebContent&apos; to &apos;ZFox_Geo_rjz&apos;&#x0A;- Original project: &apos;ZFox_Geo&apos;&#x0A;- Destination element: &apos;ZFox_Geo_rjz&apos;&#x0A;- Original element: &apos;WebContent&apos;" description="Copy folder" destination="=ZFox_Geo_rjz" element1="WebContent" files="0" flags="589830" folders="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1399251572612" units="0" version="1.0"/>
+</session>

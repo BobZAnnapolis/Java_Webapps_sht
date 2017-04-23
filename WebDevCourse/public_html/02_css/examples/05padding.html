@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <title>Padding</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+    
+    	.large {
+    		font-size: 200%
+    	}
+    
+    	.underline {
+    		text-decoration: underline;
+    	}
+    
+    	.bold {
+    		font-weight: bold;
+    	}
+    
+    	#green {
+    		color: green;
+    	}
+    
+    	.purplebox {
+    		background-color: #B404AE;
+    		width: 200px;
+    		height: 200px;
+    		padding:10px;
+    	}
+    	
+    	.greenbox {
+    		background-color: #295715;
+    		width: 300px;
+    		height: 200px;
+    	}
+    	
+    	p {
+    		padding:0;
+    		margin:5px;
+    	}
+
+    </style>    
+</head>
+
+<body>
+
+    <h1>PADDING</h1>
+
+	<div class="purplebox">
+		<p class="large">Text using p=large inside a div=purple, padding</p>
+	</div>
+
+	<div class="greenbox">
+		<p id="green" class="large">Text using p=green,large inside a div=green</p>
+	</div>
+
+	<p>
+	<div class="purplebox">
+		Text inside same div=purple,padding no p tag</p>
+	</div>
+	</p>
+
+	<p class="floatleft">
+		The 3rd <span class="underline large bold">word</span> in this paragraph is underlined, large and bolded.
+	</p>
+
+</body>
+	<hr />
+	<p><a href="../index.html">..chapter 02 index..</a></p>
+</html>

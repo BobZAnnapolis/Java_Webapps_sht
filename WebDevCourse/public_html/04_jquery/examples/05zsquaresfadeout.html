@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+    <title>04 Squares Fade Out</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Ch 04 Squares Fade Out" />
+	
+	<script type="text/javascript" src="../js/jquery_300_min.js"></script>
+	
+	<style>
+	
+		.square {
+			width: 100px;
+			height:100px;
+			background-color:red;
+			margin:10px;
+		}
+	
+		#circle {
+			width: 90px;
+			height:90px;
+			background-color:green;
+			border-radius:100px;
+		}
+
+	</style>
+	
+</head>
+ 
+<body> 
+
+	<h1>Ch 04. Make The Squares Fade Out</h1>
+	
+	<p>Click the circle to see the squares fade out</p>
+	<div id="circle"></div>
+
+	<div class="square"></div>
+	<div class="square"></div>
+	
+	<p id="fadein">Click this text to make them fade back in</p>
+
+	<script>
+	
+		$("#circle").click(function() {
+			$(".square").fadeOut();
+		})
+	
+		$("#fadein").click(function() {
+			$(".square").fadeIn();
+		})
+	
+	</script>
+
+
+</body>
+	<hr />
+	<p><a href="../index.html">..HOME..</a></p>
+</html>

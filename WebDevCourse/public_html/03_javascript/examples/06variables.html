@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <title>03 JS Variables</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Chapter 03 Javascript Variables" />
+
+</head>
+ 
+<body> 
+
+	<h1>Javascript Variables</h1>
+
+	<input id="myInput" type="text" value="enter text here" />
+
+	<button id="stylesChanger">Change the text below...</button/>
+		
+	<div id="changerDiv">This is the text that will be changed</div>
+
+	<script type="text/javascript">
+		
+//		var newText=document.getElementById("myInput").value;
+		var newText;
+		var divID="changerDiv";
+		
+		document.getElementById("stylesChanger").onclick=function() {
+
+			// set var = to current contents each time fcn is called
+			newText=document.getElementById("myInput").value;
+			
+			document.getElementById(divID).innerHTML=newText;
+
+		}
+		
+	</script>
+				
+</body>
+	<hr />
+	<p><a href="../index.html">..HOME..</a></p>
+</html>

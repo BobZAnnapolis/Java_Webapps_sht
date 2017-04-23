@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <title>04 Changing Styles</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Ch 04 Changing Styles" />
+	
+	<script type="text/javascript" src="../js/jquery_300_min.js"></script>
+	
+	<style>
+	
+		.square {
+			width: 100px;
+			height:100px;
+			background-color:red;
+			margin:10px;
+		}
+	
+		#circle {
+			width: 90px;
+			height:90px;
+			background-color:green;
+			border-radius:100px;
+		}
+
+		#rectangle {
+			width: 90px;
+			height:60px;
+			background-color:blue;
+		}
+
+		.yellowsquare {
+			width: 110px;
+			height:110px;
+			background-color:yellow;
+			margin:10px;
+		}
+	
+	</style>
+	
+</head>
+ 
+<body> 
+
+	<h1>Ch 04. Changing Styles</h1>
+	
+	<p>Click the circle to see its defined css width</p>
+	<div id="circle"></div>
+
+	<p>Click a square to change its width</p>
+	<div class="square"></div>
+	<div class="square"></div>
+	
+	<p>Click on the rectangle to make it disappear</p>
+	<div id="rectangle"></div>
+
+	<p id="fadeout">Click on this square to see it fade out - click on this text to make it reappear</p>
+	<div class="yellowsquare"></div>
+
+	<script>
+	
+		$("#circle").click(function() {
+			alert($(this).css("width"));
+		})
+	
+		$(".square").click(function() {
+			$(this).css("width", "200px");
+		})
+	
+		$("#rectangle").click(function() {
+//			$(this).css("display", "none");
+			$(this).hide();
+		})
+	
+		$(".yellowsquare").click(function() {
+			$(this).fadeOut();
+		})
+	
+		$("#fadeout").click(function() {
+//			$(".yellowsquare").css("display", "block");
+			$(".yellowsquare").fadeIn();
+		})
+	
+	</script>
+
+
+</body>
+	<hr />
+	<p><a href="../index.html">..HOME..</a></p>
+</html>

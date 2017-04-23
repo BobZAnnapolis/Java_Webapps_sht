@@ -1,0 +1,159 @@
+Uses : https://www.ecowebhosting.co.uk/cp/webdevcourse
+
+b***zee@*c*d.com
+9##B********r
+
+- Create Hosting Packages
+    domain name : bobz.com
+    Select Hosting Package : Advanced - Unlimited (Linux)
+
+- Manage Hosting Packages
+    click on above - brings you to ‘Control Panel’
+
+
+Chapter 04 - jQuery
+===================
+
+	framework
+	javascript library that sits on top of javascript
+	allows you to access certain functions more easily
+
+	jquery.com
+	jqueryui.com
+		lots of UI feature sets
+	lots of easy plugins to do all sorts of visual affects
+		typeahead
+		image sliders
+		image displayers
+
+TO USE :
+	to use jquery - you have to download the version you wish to use
+		and then point to it inside your html file in the <script> 
+		tag  <script src=“path to query.js”></script>
+	use compressed version - it’s smaller - use uncompressed if you
+		want to look at the code
+	“usually” websites have a “js” folder where all  the javascript 
+		files live, can save it in there if you want
+
+	you can also link to the libraries by referencing their locations
+		at google, etc - a little slower but if speed isn’t a
+		priority….
+		eg., src=“http://code.jquery.com/jquery-latest.min.js”
+
+	advantages of local 
+		- you know the exact version {above versions will change}
+			- again, if you want that, do it hat way
+		- can also modify it when it is local
+		- YOU DON’T HAVE TO BE CONNECTED TO THE INTERNET
+
+	advantages of website
+		- will always reference the latest
+		- changes are very HIGH that the user has already
+			visited a webpage that has referenced this location
+			and the browser will already have downloaded it
+
+
+	has a built-in (jQuery) variable - do a simple test to see if it exists
+		and display an alert
+
+
+	Inside the <script> tags, detecting a click would be something like
+		$(“id/class_field_name”).click(function() {
+			….insert click code here
+		}
+		$ - a built-in jQuery indicator/selector
+
+	$(“id/class_field_name”).hover(function() <- do something when
+		‘hovering’ over an item
+
+	can also select all of a certain section, eg all the “divs”
+		$(“div”).click
+	ANY ELEMENT TYPE can be used !!
+
+	$(“field_nm”).html() <- select html of a field
+	$(“field_nm”).html(“new text”) <- change html
+	var str = $(“field_nm”).html  <- save the contents of a field
+	
+Changing Styles
+===============
+	use the .css function
+
+	in the script - you can perform an action on ALL of the elements by using
+		the generic name, eg “div” or “p” - but when in the function - to 
+		do an action on the actual one clicked - you can use ‘this’
+
+	$(“”).css(“style_nm”) - accessing a style
+	$(“”).css(“style_nm”, “new_value”) - accessing a style
+
+	$(this).css(“display”,”none”); <- make it hidden, or,
+	$(this).hide();
+
+	$(this).fadeOut - visually fades from view - sets display to “none”
+	$(this).fadeIn - visually fades into view
+		- have lots 
+
+	the “fade” functions above are simple - they do have additional 
+		functionality -look it up
+
+Fading Content
+==============
+	http://api.jquery.com/fadeout/ - lots of examples
+
+
+CALLBACK FUNCTIONS
+==================
+	called when another function ‘completes’ its action
+	usually embedded inside another function call, eg,
+	$(this).fadeOut(2000) - a 2 second fadeout, to call a fcn when the fadeout is done….
+	$(this).fadeOut(2000, function() {
+		function code goes here
+	    } // end of callback function
+	) // end of fadeout call
+
+
+ANIMATING CONTENT
+=================
+	jQuery does this VERY well
+	once an elements is selected, call the .animate() fan
+	lots of parameters, look them up, eg at http://api.jquery.com/animate/
+		eg, $(this).animate({width:”300px”},1500) <- change the width to 300px in a second and a half
+	example usage
+		have small text - click on to enlarge tomato it easier to read
+
+AJAX
+====
+	Very powerful Javascript technology, jQuery does it very well
+	Aynschronous Javascript and XML
+	Asynchronous - does it in the background while javascript executing the foreground
+	essentially does stuff in the background while your user is interacting w/web page
+
+NOTE : AJAX and javascript WON’T work using the ‘file’ protocol in your browser, i.e., can’t
+	load a local file containing AJAX to test it out - MUST be done on a ‘real’ site
+
+USING : http://176.32.230.47/bobz.com/04_jquery/examples/08ajax.html
+
+
+	An example of how to use ajax to get content from a web site
+	eg $.ajax({
+			url:"08ajax.html"
+		}).done(function(data) {		
+			alert(data);
+		});
+
+
+Regular expressions
+===================
+It is a way to track for a particular string being a particular pattern
+check for: email addresses, urls
+
+jQuery has a built-in str.matchfcn
+format - put string between /, eg, regex=/great/
+
+if it finds it, returns the string itself, otherwise returns null
+
+it is case-sensitive; add an intend to be case-insensitive
+
+
+
+
+

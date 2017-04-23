@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+<!-- 
+	Robert John Zawislak
+	05/01/2014
+	Tested on FireFox, IE and Safari - works on my machines
+	
+	ZeroFox homework assignment to get familiar with interfacing to
+	3rd party APIs, processing their return structures, demonstrating
+	my incompetence, etc....
+
+	Given more time and/or more experience on where to find the 
+	proper resources, I would separate this into more files, document 
+	it better and handle things like mobile displays, localization, all
+	the possible kinds of errors, exceptions etc., but since this was
+	"only supposed to take 1-2 hours"... 
+
+	...here's the process, along with my issues, with this assignment :
+	After reading it, my initial feeling was shock, which was quickly followed
+	by inadequacy cuz there's no way this should only take 1-2 hours.
+	"Could a person with no exposure whatsoever to the Google Maps APIs really
+	go from complete cluelessness to creating a 1 page HTML file with 
+	some embedded JSP functionality that displays a map with multiple 
+	informative pop up markers on it really be that easy ?"
+	
+	I assumed this wasn't a trick assignment so i started down the path of
+	trying to figure this out. The 1st stop was Google and to perform a quick
+	search along the lines of "How do I use the Google Maps API to display a
+	map with some markers on it ?" That quickly got me started and had several
+	links to some quick and dirty examples. And rather surprisingly, I was able 
+	to quickly create an Eclipse Dynamic Web Application project, new HTML page and
+	copy-paste one of those examples to use as a baseline. It actually worked,
+	but was centered in Sydney, Australia. After looking at the data set and
+	seeing that all of the states ['states' being the keyword here, stay tuned] 
+	were in the U.S., I spent some time looking at the code to see what it was 
+	doing. I saw it was using the hard-coded latitude/longitude coordinates in 
+	the map options area. I didn't have latitude / longitude values, i had  
+	string addresses. So i had to search some more to find a lat/long value for 
+	the center of the US. The 1st few examples didn't help as they weren't
+	in English or were using a version of Google maps that didn't match mine so 
+	the fields on my screen weren't appearing on theirs. I eventually found one
+	way to get the lat/long vals off a Google Map and used those values in this
+	program. That change successfully changes the initial display but the zoom 
+	value was off so I had to play with in order to arrive at a value I was 
+	happy with.
+	
+	At this point, I had an initial display showing a map of the United States. 
+	So far so good, but now about 45 minutes had passed :-(
+
+	I now had to figure out how to display markers. Again to Google Search I went.
+	The first few examples demonstrated how to do it if you already had a
+	hard-coded array of lat / long values. No help there. I didn't have that so 
+	the search went on. I searched for how to get lat / long values from addresses, 
+	and that provided a plethora of examples to look at, which were implemented in 
+	a wide variety of ways. 
+	
+	Having never done geocoding, i didn't know if what I was looking at was crap 
+	so I copy-pasted different examples until I got one that appeared to work. 
+	That example used a string array of 4 string addresses. The homework example 
+	had considerably more so I copy-pasted the addresses from the homework example 
+	into my HTML file, corrected them so that they became my data set and tried 
+	running the program again......grrrrr.....
+	
+	....that's when i started running into this annoying "OVER_QUERY_LIMIT" issue. 
+	No clue what the heck that was so had to search on that. I played around real 
+	quick with the array size until I got it down to a size where the code could
+	loop thru them all without getting the error pop up. I think it was around 8 
+	or so.
+	
+	Once I had that functionality working, i saw that the other part of the homework
+	was to implement the pop up address infowindow piece. So I searched some more
+	until i found out how to do that and got that working. The 1st attempt had 
+	every map marker displaying the same address so I had to correct that...
+	
+	....04:59:57...04:59:58...04:59:58...05:00:00...05:00:01...	
+	
+	At this point, 5 hours of my life was gone so I was feeling pretty bad
+	about exceeding the expected time limit but i wanted to get it done. In 
+	a sick masochistic way, I was enjoying learning this new stuff. I was 
+	getting immediate visual feedback so I kept on. 
+	
+	At this point the program could display a map, some map markers and pop 
+	up infowindows for each marker. But it couldn't handle the entire data
+	set. So i needed to solve that problem. Back to Google Search and a 
+	"How do i stop getting the OVER_QUERY_LIMIT error messages when I am trying 
+	to get multiple lat / long values from the geocoder call ?" plea was 
+	attempted. That opened up a can of worms. One of the 1st links led me back 
+	to the GM API pages and instructions to get an API key. Well, the 
+	instructions didn't match what I was seeing on my links but i managed to 
+	figure out how to get a new key. I put it in my program :
+               src="https://maps.googleapis.com/maps/api/js?key=(AIzaSyAXOw6ZGIv0SjIWft7SsF5L9U2hVFUyYAY)&sensor=false">	
+               src="https://maps.googleapis.com/maps/api/js?v=3.exp?key=(AIzaSyAXOw6ZGIv0SjIWft7SsF5L9U2hVFUyYAY)&sensor=false">	
+	No format worked. When i tried running, i couldn't even get the initial 
+	US map to display. I was getting a pop up about Google disabling the use 
+	of the Maps API because of an invalid key value.
+	
+	So back to searching other methods. One link said that the reason the
+	OVER_QUERY_LIMIT happens is because the code is calling geocoder(address)
+	in the initialize() function and you have to call it after the page
+	loads. I wasn't doing it so that wasn't it. Another link said something 
+	about having to perform off-line loading of the addresses into a lat / 
+	long array and then just use this lat/long array in the marker loop code.
+	I have a 1 page implementation restriction so I don't know what 
+	"loading offline"  was talking about so i bagged that option. 
+	
+	Another option re-iterated the above "your hitting the server to 
+	quickly" condition and said that you have to add a short timeout to the 
+	individual queries for each lat / long value. That explanation showed 
+	how to call the setTimeout function, but i couldn't find a valid example 
+	of where it should go in the scheme of things so i put it in a few places. 
+	Again coming back to this being just a single HTML file, there aren't 
+	many places I could put it. I didn't place it in the initialize function 
+	cuz the person who said "You have to wait until the document is fully 
+	loaded and 'ready' to do something made sense. So with the initialize 
+	function ruled out, my options were limited. I tried adding it to the 
+	onclick method in the <body> section, in each of the other functions and 
+	nothing worked. Still got the "OVER_QUERY_LIMIT" message.
+	
+	One odd thing about this approach was that it didn't seem to make a 
+	difference where I placed the setTimeout call. No matter where i put it,
+	the visual display seemed to loop thru all the addresses in the array 
+	first and generate the OVER_QUERY_LIMIT message AND I only really ever 
+	saw the setTimeout period get enforced when it went to display the markers.
+	I would get the error popups real-time, then after the last popup occurred,
+	the setTimeout delay would happen and  then I would see the amrkers. 
+	So that is either an inherent thing that everybody who has spent time doing 
+	web development work knows how to bypass and which is lost to me or 
+	there's something else going on which i haven't figure out yet. I spent a 
+	good 2-4 hours just looking for solutions to this issue and trying different 
+	combinations. This added even more time spent on this than what was 
+	initially estimated.
+	
+	So now, besides being a little frustrated, I got to thinking....maybe, just
+	maybe this was a trick question. Maybe I was too quick to try to find a solution 
+	to a problem without doing some appropriate initial due diligence. So i 
+	decided to take a different angle. I created another HTML/JSP program that 
+	simply demonstrated the ability to loop thru the entire string array of 
+	addresses that were provided for the assignment. I got that up & running 
+	and started reading the page.....Tiger, Missouri......8498 Noble 
+	Autoroute, Jansen, Maine....King Salmon, Rhode Island......Bjorkdale, 
+	Alaska.....Love Lady, Rhode Island...hmmm, and i feel kind of stupid cuz it 
+	really wasn't until i got to...Scary, Kentucky....that I said "Wait a 
+	second, are these even real places ?!?!?!?!"
+	
+	So, one by one, i started evaluating the data set. I did Google searches on 
+	each and every "city, state" combination and when all was said and done, 
+	only one was valid city,state : McLean, Virgina. So I went to McLean, VA 
+	on the web and searched for "Silent Cider Alley". I couldn't find it. There
+	is no such place. After spending 2 days to get to this point, i decided to 
+	make an executive decision and created the enclosed solution, i.e., it only 
+	uses a data set containing the only valid city, state address i could find.
+	
+	This solution is what is presented below. I could have made this submission 
+	even shorter by using the original example I found which just displayed 
+	hard-coded vals for Sydney, Australia and changed them for McLean, VA. 
+	
+	When i thought about it, if i had done that, then i would have gotten this 
+	done in the 1-2 hour timeframe that was estimated.....part of me is hoping 
+	that you folks will get back to me saying that was one possible solution 
+	to this exercise.
+	
+	It was kind of fun, in a way, getting it to this point but it definitely 
+	brought up some issues that I don't see how they could have been detected 
+	and addressed [by someone who has never done geocoding] in the allotted 
+	timeframe. 
+	[1] I had a version that was looping thru all the original string addresses, 
+		and it was displaying an "Alert(address+status)" message. The status 
+		field was coming back with "OK", "ZERO_RESULTS" and "OVER_QUERY_LIMIT" 
+		vals. There "could" be some additional code added to filter out the 
+		"ZERO_RESULTS" queries......but.......
+	[2] ....to piggy back on the above, if I can figure out how to prevent 
+		the "OVER_QUERY_LIMIT" message from occurring, i could have tried to 
+		pre-process the original data set and build a 'working' data set that 
+		only included the lat / long values for those queries which came back 
+		with an "OK" status.....however....
+	[3] ...the caveat to this approach is that in reality, if you tried to 
+		look up every single string address from the original data set, 
+		you won't find any of those places to be real. So now I am completely 
+		stumped as to why any of the geocoder(address) calls were coming back 
+		with "OK" status messages, none of them should have. I should have 
+		gotten "ZERO_RESULTS" for every one, why isn't that happening ?
+		
+	To investigate that, would require even more time. So for the sake of
+	getting this submitted to you folks for review, moving the process
+	along and me getting to other assignment, I decided to submit this.
+	
+	So that is the process I went thru to arrive at this solution. I learned 
+	a lot, and if i didn't do too much wrong, i now know have some serious 
+	doubts about trusting the validity of an "OK" status response from Google's
+	geocoder(address) call. I also now know why some people end up in the wrong
+	place when asking Google Maps for driving instructions.....
+	
+	For my own benefit, I'm still gonna work on this to figure out how to 
+	get the "OVER_QUERY_LIMIT" issue solved, and to handle the different 
+	status messages. 
+-->
+
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+    <title>Garbage In-Garbage Out</title>
+
+    <!-- define the map to take up the whole screen -->
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>
+
+    <!-- access Google Maps API, set sensor to false to disable -->
+    <!--  so determining user location automatically is off, altho this could be neat... -->
+    <!--  		this key from the API web site generated an error condition, would not load the initial page - why ?? -->	
+    <!--        src="https://maps.googleapis.com/maps/api/js?key=(AIzaSyAXOw6ZGIv0SjIWft7SsF5L9U2hVFUyYAY)&sensor=false">  -->	
+    <script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false">		
+    </script>
+
+    <script type="text/javascript">
+    
+//	this is the original dataset mailed to me...the humor of the names was
+//	lost on me until way too late in the process, kind of funny now....
+//		
+//	program invocation #1 was getting an OVER_QUERY_LIMIT 
+//	error when all these addresses were pumped into the 
+//
+	var myLocations = ["8466 Silent Cider Alley, Mclean, Virginia, 23452-3143, US"
+                      ,"7614 Cinder Shadow Road, Tiger, Missouri, 64390-2580, US"
+	                   , "8498 Noble Autoroute, Jansen, Maine, 04044-7210, US"
+	                   , "9131 Wishing Lookout, Noel, Delaware, 19909-7504, US" 
+	                   , "6449 High Horse Ramp, King Salmon, Rhode Island, 02970-4629, US" 
+	                   , "7797 Misty Treasure Common, Counselor, New Hampshire, 03154-0935, US" 
+	                   , "4645 Gentle Bluff Moor, Bjorkdale, Alaska, 99628-7953, US" 
+	                   , "7942 Indian Deer Circle, Love Lady, Rhode Island, 02825-5393, US" 
+	                   , "9078 Bright Corners, Maxinkuckee, New Jersey, 08329-1017, US" 
+	                   , "8495 Green Butterfly Key, Rome, New Hampshire, 03030-3394, US" 
+	                   , "5737 Thunder Pony Parade, Kawkawlin, Virginia, 24153-1512, US"
+	                   , "6330 Iron Dale Pines, Free Trade, Kansas, 66383-6017, US" 
+	                   , "8794 Old Path, Bountiful, Arizona, 85946-3082, US" 
+	                   , "4080 Cotton Anchor Highlands, Ogletown, Michigan, 48051-0914, US"
+	                   , "5316 Dewy Avenue, Scary, Kentucky, 40653-0127, US" 
+	                   , "2215 Lazy Lane, Hague, Delaware, 19891-4513, US" 
+	                   , "1634 Cozy Crest, Semans, Utah, 84099-1723, US" 
+	                   , "8318 Stony Townline, Swift Current, North Carolina, 27247-1711, US" 
+	                   , "6881 Sunny Stead, Tucumcari, Colorado, 80370-0567, US" 
+	                   , "4406 Broad Leaf Cape, Wamduska, New Jersey, 08405-8116, US" 
+	                   , "9384 Hidden Oak Villas, Beaver Bay, Tennessee, 38168-6297, US" 
+	                   , "2505 Merry Downs, Landmark, Kansas, 67110-4900, US" 
+	                   , "4655 Amber Mall , Mineral King, Arizona, 85277-2965, US" 
+	                   , "5102 Umber Mountain, Nolichucky, Kentucky, 40187-6292, US" 
+	                   , "1876 Burning Branch Diversion, Sligo, Oregon, 97127-4653, US"
+	                  ]; 
+//
+// 	the only valid city/state combination - using just this one to
+// 	demo functionality - i will work on getting the original data
+//	displayable. since it's one i could have just hard-coded this in
+//	initialize() and been done in 1-2 hours
+//
+//	var myLocations = [ "8466 Silent Cider Alley, Mclean, Virginia"];
+//
+// 	standard Google Maps API variables
+//
+	var map;
+	var geocoder = new google.maps.Geocoder();
+//
+// 	there are all sorts of UI things you could build into here,
+// 	e.g. if you pre-process all the data and know the content of 
+//	every infowindow you are going to display, you could set the 
+//	maxwidth just once, or, you could calculate it each time to 
+//	just be as big as you need it, options galore
+//
+    var infowindow = new google.maps.InfoWindow();
+    var errorLocationsCount = 0;
+    var errorLocations = "";
+//
+//	initialize
+// 		called when page is initially loaded
+//		center the map around Missouri, use zoom val to 
+//			show most of the US
+//
+    function initialize() 
+    {
+		google.maps.visualRefresh = true;
+    	var missouri = new google.maps.LatLng(41.850, -87.65);
+    	var mapOptions = {
+      		center: missouri,   <!-- somewhere in Oz, er, Missouri -->
+      	  	zoom: 4
+      	};
+      	<!-- 	display the map using API w/above options -->
+      	map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+    }
+//
+// 	create the marker and put it on the map
+// 		add 2 event listeners
+//			- 1 to display infowindow when marker gets clicked, and,
+//			- 1 to make it disappear when focus goes off it
+//
+    function createMarker(latlng,html)
+    {
+    	//
+    	// there's a problem with the style of this marker
+    	// it pops up ok but it looks like you can click
+    	// on the scroll bars and a close it with an 'X' 
+    	// but because of the mouseout event you can't really 
+    	// get to them with the mouse, so, they shouldn't 
+    	// appear, probably can correct via a style setting
+    	//
+    	var marker = new google.maps.Marker({
+    	    position: latlng,
+    	    map: map
+    	});
+    	
+    	google.maps.event.addListener(marker, 'click', function() { 
+//    	    infowindow.setContent(html + "\nWhich isn't even a real place either but at least the city, state combination is a valid one");
+// 	    	infowindow.setContent(html + " - not a real street location - Please read the HTML file explaining this solution :-)");
+ 	    	infowindow.setContent(html);
+    	    infowindow.open(map, marker);
+    	});
+    			
+    	google.maps.event.addListener(marker, 'mouseout', function() { 
+    	    infowindow.close();
+    	  });
+    }
+//
+// 	dummy function 
+// 		used this to see if setTimeout was actually
+//		waiting for the setTimeout value - it wasn't :-(
+	function getTime() {
+		var cT = new Date();
+		var h = cT.getHours();
+		var m = cT.getMinutes();
+		var s = cT.getSeconds();
+		return ( h + ":" + m + ":"  + s);
+	}	
+//
+// 	geocodeAddress
+//		originally had this inside the markLocations() function
+//		moved it out when i was trying to test out various
+//		setTimeout(function, interval,...) scenarios
+//
+    function geocodeAddress(nextLocation, attempts) 
+    {
+//		alert("...geocodeAddress(" + nextLocation +", " + attempts + ") called at :" + getTime());
+    	geocoder.geocode( { 'address': nextLocation}, function(results, status) 
+    	{
+//			alert(nextLocation + " - " + status);
+    	    if (status == google.maps.GeocoderStatus.OK) 
+    	    {
+    			createMarker(results[0].geometry.location, nextLocation);
+    	    }
+    	    else
+    	    {
+    	    	if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
+//        	    	alert(nextLocation + " NOT FOUND");
+					// the idea was to generate a list of locations causing this
+					// result and then display it back to the user - i need to learn
+					// more about asynchronous web behaviour to get this to work
+					// the way I want it to
+           	    	errorLocationsCount++;
+           	    	errorLocations += nextLocation + ";   ";
+    	    	}
+    	    	else
+    	    	{
+    	    		if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+//    	    			alert("OVER_QUERY_LIMIT error, retrying for " + nextLocation);
+						// the idea here was to repeat a few times for the same location
+						// i'm guessing that enough time "should" pass between invocations
+						// so that the next attempt would succeed.....BUT......you never
+						// know so I wanted to loop a few times. The problem was that
+						// when i tried to put the setTimeout call inside this if
+						// statement, map wouldn't display, this is something else I
+						// need to learn how to do better
+						attempts++,
+//						if (attempts < 4) {
+	    	    			setTimeout(function(){geocodeAddress(nextLocation,attempts);},250);
+//						}
+    	    		}
+    	    		else
+    	    		{
+    	    			; // handle this error condition	
+    	    		}
+    	    	}
+    	    }
+    	}); 
+   	}
+//
+//	markLocations
+//		called when the "Map It !" button is clicked on 
+//		the main screen. Loops thru data set and calls 
+//		helper functions to convert each string address 
+//		into a mappable lat/long val, place a marker on 
+//		the map and create event listeners for each marker 
+//		to handle displaying / hiding additional infowindows 
+//		for each displayed location
+//
+    function markLocations() 
+    {
+    	var arrayLength = myLocations.length;
+		var nextLocation;
+    	for (var i = 0; i < arrayLength; i++) 
+    	{
+    		nextLocation = myLocations[i];
+//    		alert("...calling geocodeAddress("+nextLocation+")");
+    		geocodeAddress(nextLocation,0);
+    	}    	
+    } // end markLocations
+
+    // report any error
+    if (errorLocationsCount > 0)
+    {
+    	alert("Problems withthe following locations :" + errorLocations);
+    }
+
+    // load the map based on our map options criteria
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+
+  </head>
+  <body>
+    <!-- reserve the spot for the map, use styles above to determine the look -->
+	<div id="panel">
+		<input id="address" type="textbox" value="McLean, Virgina"> <input
+			type="button" value="Map It !" onclick="markLocations()">
+	</div>
+    <div id="map-canvas"/>
+  </body>
+
+</html>

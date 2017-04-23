@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <title>04 AJAX</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Ch 04 AJAX" />
+	
+	<script type="text/javascript" src="../js/jquery_300_min.js"></script>
+	
+	<style>
+	
+	</style>
+	
+</head>
+ 
+<body> 
+
+	<h1>Ch 04. AJAX - Asynchronous Javascript and XML</h1>
+	
+	<div><p>Reload the page to see AJAX on the server in action<br>
+	        CANNOT run locally by displaying the file in a browser.<br><br>
+	        View the source to see the actual code if you are running locally.<br><br>
+	        Currently being hosted at <a href="http://176.32.230.47/bobz.com/04_jquery/examples/08ajax.html">course website</a></p></div>
+	
+	<script>
+
+		// 'get' the contents of this url, save into a data var, 
+		// then display it to user - could be used for 'screen scraping' apps
+		$.ajax({
+			url:"08ajax.html"
+		}).done(function(data) {		
+			alert(data);
+		});
+	
+		alert("Now we're going to use some ajax to change the header - dismiss this dlg and then check the h1/header section");
+	
+		// using ajax, change the contents of the h1 section - get source from specified file
+		// assuming the file exists and is in the current directory
+		$.ajax({
+			url:"08btest.html"
+		}).done(function(data) {		
+			$("h1").html(data);
+		});
+	
+	
+	</script>
+
+</body>
+	<hr />
+	<p><a href="../index.html">..HOME..</a></p>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <title>03 Change Content</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Chapter 03 Javascript Changing Website Content" />
+
+</head>
+ 
+<body> 
+
+	<h1>Changing Website Content</h1>
+
+	<div>
+
+		<button id="textChanger">Change first div text...</button/>
+		<p><div id="changerDiv">This is the text that will be changed</div></p>
+
+		<button id="textAppender">Append text when clicked...</button/>
+		<p><div id="appenderDiv">Javascript is...</div></p>
+
+		<button id="textCreator">Add text when clicked...</button/>
+		<p><div id="creatorDiv"></div></p>
+
+		<script type="text/javascript">
+		
+			document.getElementById("textChanger").onclick=function() {
+				document.getElementById("changerDiv").innerHTML="This is the new text !! {added by textChanger fcn}";
+			}
+		
+			document.getElementById("textAppender").onclick=function() {
+				document.getElementById("appenderDiv").innerHTML+="awesome !! {added by textAppender fcn}";
+			}
+		
+			document.getElementById("textCreator").onclick=function() {
+				document.getElementById("creatorDiv").innerHTML="<ul><li>adding some html via a JS fcn</li><li>textCreator fcn called!!</li></ul>";
+			}
+		
+		</script>
+				
+	</div>
+
+</body>
+	<hr />
+	<p><a href="../index.html">..HOME..</a></p>
+</html>

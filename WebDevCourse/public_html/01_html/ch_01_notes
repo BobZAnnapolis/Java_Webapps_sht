@@ -1,0 +1,168 @@
+Uses : https://www.ecowebhosting.co.uk/cp/webdevcourse
+
+b***zee@*c*d.com
+9##B********r
+
+- Create Hosting Packages
+    domain name : bobz.com
+    Select Hosting Package : Advanced - Unlimited (Linux)
+
+- Manage Hosting Packages
+    click on above - brings you to ‘Control Panel’
+
+- Hosting Control Panel
+   ‘File Manager’ - gui-based website directory browser
+      set up ‘ftp’ and use a terminal session is better/quicker [next lesson]
+      all ‘public’ files in ‘public_html’ folder
+        edited ‘index.html’
+   Under ‘Account Info”
+      click on ‘Temp Web Address: Visit Website” to see above changes
+   ‘Mail Boxes’
+      need to purchase the domain to use
+
+- FTP setup
+    ftp - file transfer protocol
+       easy way to upload files from local machine to web hosting site
+    on cpanel - go to the “Unlock FTP” section
+       KEEP IT LOCKED - select short time bursts while working on the course
+       ONLY use the “Unlock by IP” section if you have a fixed machine IP
+       after you lock it - go to FTP details to see how to access it
+       if you haven’t bought the FTP Server/domain name - use the FTP Server IP address
+       any ftp program will/should work
+       FireFox - add plugin FireFTP & FireFTPButton [add btn on toolbar]
+          - use cpanel ftp info to set up an ftp account
+       after account is established - download ‘public_html’ folder locally to machine
+          - add to git !!!
+          - use local machine editor to edit files
+            - course uses TextWrangler [for Mac]
+          - had issues getting it to work inside FireFTP
+            - works ok from Finder
+
+- Getting Help
+    jsbin.com
+        - free site, post html, css, javascript files - so others can help debug
+
+- Intro to HTML
+	- create a simple file called hello world.html, no tags, find in Finder - display in browser
+
+- Composition of a web page
+	go to google.com
+	right-click - select View As Page Source
+	example.com - view page source
+		composed of open-close tags
+		1st line - usually doctype tag
+		2nd line - usually <html> - beginning
+	1st section
+		<head>
+			information @ page
+			link to other files we need to download, styles, javascript to help display
+		<title> - 
+		<meta> - info @ page
+			charsets - important to set, utf-8
+			content type
+				html, charsets
+			viewport
+				important for mobile devices
+		<style>
+			usually css - cascading style sheets
+				- how to display the page
+	main section
+		<body>
+			<div>
+				- division of web page, different content
+			<h1>
+				headers
+			<p>
+				general text content
+			<a href=>
+				anchor, i.e., a link to a uri
+
+- Header tags
+	h1 - usually only 1 - largest
+	h2 - h6 - descend in size
+	h6 really small - rarely used
+	h7 and greater unnecessary - text is same size as current paragraph-sized font
+
+- Paragraph tags
+	<p> - creates line breaks on page but with lots of padding
+	<br/> - makes lines closer together
+	<hr/> - cane used as a separator, draws a line in an html page
+
+- Formatting text
+	unordered lists
+		use a <ul> tag to start the bulleted unordered list
+			use <li> tags within for each list item
+	ordered lists
+		creates a list with numbers
+		use a <ol> tag to start the ordered list
+			use <li> tags within for each list item
+	images
+		use img src=“” tag
+			src can be local [provide path] or remote [go to pic site, copy img url
+			can use additional parts to size it, eg,height, width
+- Forms
+	not much use w/o server side code to process the form
+	but can still do client stuff to learn how to lay one out
+	user input fields
+		input=text
+			small text input, free format
+			use name= field to send in GET request, can see it in URL when ban pressed
+		input=email
+			browser will validate
+		select-option
+			implements combobox single-select
+		input type=radio
+			implements single-select via radio buttons
+			need to use same ‘name=‘ field to group
+		buttons
+			input type=submit
+			use value= to change ban text
+	adding “name=“ field to each tag sends screen content to server to be evaluated
+		need to name/format incorrectly based upon type= field
+
+- Links
+	make links to : <a href=“..location info here…”>
+		other sites on the web, 
+		images local and on the web,
+		other ‘anchored’ on the same page 
+			- need web pages w/lots of scrollable real estate
+			- use <a name=“here”> to id place to jump to
+			- jump to it using <a href=“#here”>
+
+- Tables
+	use <table> tag
+	tables composed of :
+		headers - use <th>
+		rows
+		columns
+			- determined by ‘cells’ - use <td> tag - ‘table descriptor’
+	need to use styles and css to make tables ‘prettier’
+
+- HTML Entities
+	use these to get ‘special characters’ to display on a web page
+	eg, ‘<a>’, or special language chars like accent marks, copyrights, etc
+	w3schools.com - good resource
+	start with an & and end with a ;
+		lots of different kinds - see resource for examples
+	can use character codes on the web page
+
+	EXAMPLE : TO GET MULTIPLE SPACES use &nbsp !!
+		BETTER TO USE styles to accomplish this but in a pinch - this will work
+
+- iFrames
+	used to embed content form another page in your webpage
+	embeds html pages inside a box
+	also used to embed things like YouTube videos
+		- go to YouTube
+			- under the video, choose the Share-Embed option
+				= that will give you the iFrame to put into your web page
+	the course video said this wouldn’t work but it worked just fine for me in iMac using FireFox
+
+- Putting altogether
+	combines all the above into 1 html page
+	new things :
+		to get the video to align correctly - use align tag
+		to get the form submit button to go to a web page - use action tag
+			<form action=“http:..url..”> used with
+			<input type=“submit”
+		button click will send user to action location - used like a link

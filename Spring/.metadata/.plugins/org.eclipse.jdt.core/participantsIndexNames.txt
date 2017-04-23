@@ -1,0 +1,5 @@
+INDEX VERSION 1.127
+/Users/bobzawislak/Documents/Spring/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1102372998.index
+/WebApp/src/main/java
+/Users/bobzawislak/Documents/Spring/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/696187204.index
+/WebApp/src/main/java

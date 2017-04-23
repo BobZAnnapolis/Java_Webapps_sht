@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Thu Jul 17 00:08:15 EDT 2014
+org.eclipse.jst.jee.server\:WebApp=/Users/bobzawislak/springsource/vfabric-tc-server-developer-2.9.5.SR1/Spring_Tomcat_Server/wtpwebapps/WebApp
+org.eclipse.jst.jee.server\:/binary\:/Users/bobzawislak/.m2/repository/org/springframework/spring-web/3.2.3.RELEASE/spring-web-3.2.3.RELEASE.jar=/Users/bobzawislak/springsource/vfabric-tc-server-developer-2.9.5.SR1/Spring_Tomcat_Server/wtpwebapps/WebApp/WEB-INF/lib/spring-web-3.2.3.RELEASE.jar

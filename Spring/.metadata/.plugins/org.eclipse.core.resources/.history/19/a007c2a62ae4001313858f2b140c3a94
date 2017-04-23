@@ -1,0 +1,39 @@
+package net.javavideotutorials.com;
+
+import java.io.File;
+
+/*
+	exceptions
+
+ 	Runtime exceptions
+ 	==================
+ 	- unchecked exceptions
+ 	- e.g. OutOfMemory
+ 	- we don't have code to handle these, they occur 'unexpectedly'
+ 	
+ 	Exceptions
+ 	==========
+ 	- checked exceptions
+ 	- we're executing code that have 'expected' possible exceptions
+ 	- e.g., FileNotFound
+ 	- we can write code to handle these, e.g. - try-catch
+
+*/
+public class Runnable {
+
+	public static void main(String[] p_args) {
+		
+		String msg = "This is a test message.\nThis is a new line of the test message.";
+		System.out.println(msg);
+/*		try
+		{
+			File file = new File("\test.txt");
+		}
+		// catch will handle the exception
+		catch ()
+		{
+			
+		}
+*/
+	}
+}

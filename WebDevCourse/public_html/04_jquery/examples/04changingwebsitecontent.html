@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <title>04 Changing Website Content</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Ch 04 Changing Website Content" />
+	
+	<script type="text/javascript" src="../js/jquery_300_min.js"></script>
+	
+	<style>
+	
+		#circle {
+			width: 100px;
+			height:100px;
+			background-color:green;
+			border-radius:100px;
+		}
+	
+	</style>
+	
+</head>
+ 
+<body> 
+
+	<h1>Ch 04. Changing Website Content</h1>
+
+	<div id="circle"></div>
+	
+	<p>This is some text - it is supposed to change the iFrame below when hovered over but that isn't working for some reason :-(</p>
+	
+	<iframe src="http://www.cnn.com"></iframe>
+
+	<script>
+	
+		$("#circle").click(function() {			
+			$("p").html("The text has been changed via jQuery");
+		})
+	
+		$("#circle").hover(function() {			
+//			alert($("iframe").attr("src"));
+			$("iframe").attr("src", "http://www.google.com");
+		})
+	
+	</script>
+
+
+</body>
+	<hr />
+	<div><a href="../index.html">..HOME..</a></div>
+</html>

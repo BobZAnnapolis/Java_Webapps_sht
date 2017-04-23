@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+    <title>03 JS WHILE LOOPS</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Chapter 03 Javascript WHILE LOOPS" />
+
+</head>
+ 
+<body> 
+
+	<h1>Javascript WHILE LOOPS</h1>
+
+	<p>How many fingers are you holding up ?</p>
+
+	<input id="myNumber" />
+	
+	<button id="guess">Guess !</button>
+
+	<script type="text/javascript">
+
+		var myNumber = document.getElementById("myNumber").value;
+			
+		document.getElementById("guess").onclick=function() {
+
+			var gotit=false; var guesses=0; var x;
+			
+			while (gotit==false) {
+
+				var x=Math.random();
+				x=x*6;
+				x=Math.floor(x);
+				if (x==0) {
+					x=1;
+				}
+				if (x>5) {
+					x=5;
+				}
+			
+				if (x==myNumber) {
+					alert("COMPUTER GUESSED !! You : " + myNumber + "; Computer :" + x);
+					gotit=true;
+				} else {
+					alert("WRONG !! You : " + myNumber + "; Computer :" + x);
+				} // endif
+				
+				guesses++;
+				
+			} // end while
+			
+			alert("IT ONLY TOOK THE COMPUTER " + guesses + " guesses.");
+			
+		} // end onclick
+
+	</script>
+				
+</body>
+	<hr />
+	<p><a href="../index.html">..HOME..</a></p>
+</html>

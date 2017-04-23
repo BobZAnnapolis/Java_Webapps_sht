@@ -1,0 +1,169 @@
+Uses : https://www.ecowebhosting.co.uk/cp/webdevcourse
+
+b***zee@*c*d.com
+9##B********r
+
+- Create Hosting Packages
+    domain name : bobz.com
+    Select Hosting Package : Advanced - Unlimited (Linux)
+
+- Manage Hosting Packages
+    click on above - brings you to ‘Control Panel’
+
+Chapter 02 - CSS
+================
+
+CSS - Cascading Style Sheets
+	set of instructions to tell a browser how a web page should look
+
+HTML - content
+CSS - style
+
+Can be found embedded in web pages or referenced in a separate folder
+
+“style” section contains groupings of the different components that are
+	to be displayed on the web page along with descriptors for things
+	like font size, background/foreground colors, padding
+
+the web page components can just reference these defined-once ’styles’
+	instead of re-defining/copying all the descriptive information
+	to each place on the page
+
+Inline CSS 
+	- adds css style attributes inline w/html tags
+	bad idea - difficult to maintain when changes needed; not very adaptable;
+	really complicated to read when both in the same place
+
+Internal CSS 
+	- have a separate ‘style’ section in the HTML page that defines
+	all the styles for the html tags being used; define once - use many;
+
+Classes and IDS
+	used to make 1 paragraph one style and another paragraph a different style
+	uses a .class_nm format in style area and then called out in html tag
+		eg <p class=“large”>
+	classes usually used multiple times
+	ids usually only used once on a page
+		ids defined in style section beginning w/#
+	can combine class & id
+	use <span> to only affect the words between the <span> tags
+		can combine multiple classes and ids inside tags
+DIVs
+	just a “division” of your web page
+		headers, footers, etc
+	way to separate content on a web page into logical sections
+	just by using the tag doesn’t do much visually
+	the “fun” comes in when you assign styles to it
+	can use many different attributes to control the look
+	divs are always rectangles, can specify :
+		colors, width - see reference for more
+	when text is inside a div - the size attributes can determine 
+		formatting of the text, eg, word-wrap
+	if you want all the divs to look the same - just redefine one
+	if you want them to look different - use classes
+
+for all of these things - there is a default “style” for every HTML
+use this technique to ‘override’ the default version
+
+Colors
+	html-color-codes.info - great web site for colors
+	gives you HTML codes to get a wider range of colors
+
+“FLOATING” DIVS
+	up to now - every control been appearing underneath one another
+	can use float: 
+		direction attributes in the style get objects to
+		move around the page, eg,left, right
+	using just this will usually get page messy and cause overlap
+		can use a ‘clear’ style to get things back to reading better
+
+	as you resize the page 
+
+POSITIONING
+	to move things “a little” around the page, use the “relative” style 
+		attribute
+	this relative style takes additional positioning attributes that
+		are used to move it “relative” from the normal place it
+		occupied on the page
+	a lot of times you are using pixels - be careful - you could easily
+		move the section over others on the page
+	objects are placed on the page in the order they are defined in the page
+	you can change this by giving elements ‘z-index’ values
+		larger values have higher priority
+	ONLY objects using “position:relative” AND “z-index:#” will obey
+		positioning/overlapping rules
+	can move things off the page by specifying top,left attributes with 
+		negative values
+	position:static - default setting
+	position:relative - moves things around ‘relative’ to where they would
+		otherwise be
+	position:absolute - occupies a certain location on the page BUT all the
+		other objects ignore it being there, eg, if the 1st thing on
+		a page has this, the rest of the objects will start being placed
+		at the same location - there will be some blocking/overlap
+	position:fixed - kind of the same as absolute EXCEPT the object of fixed
+		at a certain position on the browser page so that if you scroll
+		it will NOT scroll of the page
+		- useful to keep a header bar always visible as you scroll
+
+MARGINS
+	margin:#px - establish a ‘margin’ around the entire DIV
+		multiple values assigned in clockwise order starting at top
+		or use margin-left, -right, -top, -bottom
+
+CSS_PADDING
+	very similar to margins
+	margins mostly used to put space around DIVS
+	padding used to put spacing on text, objects inside the div
+	<p> tag itself has some default padding,margins so keep in mind
+	can “override” by writing your own <p> tag
+
+NOTE:  by adding MARGINS & PADDING, you’re also increasing the width & height
+
+	can do the same as above with padding-left,-right,-top,-bottom vans
+
+
+BORDERS
+	‘border’ style attribute
+	need to specify width {in px} color type {eg, solid”
+		eg, border:5px red solid;
+NOTE: 	adds to width & height as well
+	see : http://www.w3schools.com/cssref/pr_border-style.asp
+	can also change borders on each side - new tags
+		border-style
+		border-width
+		border-color
+		specify all 4 sides, starting on top
+	border-radius:10px - rounded look
+	border-radius:50px - circle when height/width = 100px;
+
+FONTS
+	lots of choices associated with fonts
+	see http://www.w3schools.com/cssref/default.asp#font
+		http://www.w3schools.com/css/css_font.asp
+	font-family selected has backups listed in case machine
+		page being rendered doesn’t have the specific one
+		defined in css - there will always be a default
+
+STYLING TEXT
+	font-weight:bold
+	font-style : italic
+	color: green
+	font-size : set percentages or pixels {px} or ‘em’
+		1 em = 16px {16px is default font size}
+	add all these and more inside a class to create endless combinations
+
+ALIGNING TEXT
+	text-align: left, center, right and justified
+	when using align - aligns according to the parent tag it is within
+	justified : stretches text out to fit within a div or p
+
+tags within another tag inherit the properties of the tags it is within
+
+STYLING LINKS
+	target=_blank - opens linking a new tab
+	a:visited - to change visited color
+	a:hover - change what link does when you hover the mouse over it
+
+PROJECT: BBC Website
+	use add-ons which allow you to select colors off of current webpage

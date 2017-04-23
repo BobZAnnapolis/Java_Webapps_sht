@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+    <title>forms</title>
+ 
+<meta charset="utf-8" />
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+ 
+<body> 
+<div>
+
+	<h1>forms examples</h1>
+	<hr />
+
+		<form>
+
+			<p>		
+			Small text fields usually use input=text tags<br />		
+			<label>Value= example :<input type="text" value="value=example" /></label><br />
+			<label>Placeholder= example: <input type="text" placeholder="type here..." /></label><br />
+			<label>Email - browser validates: <input type="email" placeholder="type here..." name="email"/></label><br />
+			</p>
+
+			<p>
+			<br /><br />
+			Multi-line text fields usually use textarea tags<br />
+			<textarea name=textarea>larger amounts of text go into textarea tags</textarea>
+			</p>
+
+			<p>
+			<br /><br />			
+			Single-select combox use select-option tags<br />
+			<select>
+				<option>Select an option...</option>
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+			</select>
+			</p>
+
+			<p>
+			<br /><br />			
+			Radio buttons use input type=radio and name= fields to allow single-select<br />
+			<input type="radio" name="colour" />Red			
+			<input type="radio" name="colour" />Green
+			<input type="radio" name="colour" />Blue
+			</p>
+
+			<p>
+			<br /><br />			
+			checkbox tags used to select multiple choices<br />
+			input type=checkbox<br />
+			<input type="checkbox" name="penguins" value="1" />Penguins
+			<input type="checkbox" name="koala" value="2" />Koala
+			<input type="checkbox" name="turkey" value="3" />Turkey
+			</p>
+
+			<p>
+			<br /><br />			
+			button to initiate action to server<br />
+			input type=submit, use value to change btn text<br />
+			<input type="submit" value="hit me..." />
+			</p>
+
+		</form>
+
+	<hr />
+	<p><a href="../index.html">..home..</a></p>
+
+</div>
+</body>
+</html>

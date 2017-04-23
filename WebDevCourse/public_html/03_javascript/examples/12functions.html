@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <title>03 JS FUNCTIONS</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Chapter 03 Javascript FUNCTIONS" />
+
+</head>
+ 
+<body> 
+
+	<h1>Javascript FUNCTIONS</h1>
+
+	<p>This field is tagged with an id and populated by a function call.</p>
+
+	<p id="myNumber">  </p>
+	
+	<script type="text/javascript">
+
+		function alertMe() {
+			alert("Hi BJ !! - No parameter fcn");
+		}
+		
+		function adding(a, b) {
+			alert("fcn: adding(" + a + ", " + b + ") = " + (a+b));
+		}
+		
+		function getResult(a, b) {
+			return(a+b);
+		}
+		
+		alertMe();
+		adding(3,4);
+//		alert(getResult(9,4));
+
+		document.getElementById("myNumber").innerHTML=getResult(9,4);
+
+	</script>
+				
+</body>
+	<hr />
+	<p><a href="../index.html">..HOME..</a></p>
+</html>

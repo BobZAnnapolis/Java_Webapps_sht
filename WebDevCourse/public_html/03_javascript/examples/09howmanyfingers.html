@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <title>03 JS FINGERS</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Chapter 03 Javascript Game How Many Fingers" />
+
+</head>
+ 
+<body> 
+
+	<h1>Ch03 Javascript Game: How many fingers is computer holding up ?</h1>
+
+	<p>How many fingers am i holding up ?</p>
+	<input id="guess" />
+	<button id="myButton">Submit answer...</button>
+
+	<script type="text/javascript">
+
+		document.getElementById("myButton").onclick=function() {
+
+			var x = Math.random();
+		
+			x=6*x;
+
+			answer=Math.floor(x);
+			if (answer < 1) {
+				answer = 1;
+			}
+			if (answer > 5) {
+				answer=5;
+			}
+		
+			var guess=document.getElementById("guess").value;
+			console.log("Computer guessed " + answer);	
+
+			if ( guess==answer) {
+				alert("YES - YOU ARE CORRRECT !!");	
+			} else {
+				alert("Sorry - you guessed " + guess + " but the real value was " + answer);	
+			}
+
+		}
+
+	</script>
+				
+</body>
+	<hr />
+	<p><a href="../index.html">..HOME..</a></p>
+</html>

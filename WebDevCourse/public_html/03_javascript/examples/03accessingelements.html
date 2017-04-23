@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <title>03 elements</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Chapter 03 Javascript" />
+
+</head>
+ 
+<body> 
+
+	<h1>Accessing Elements example</h1>
+
+	<div>
+
+		<p id="text">id text: Some text</p>
+		<p id="text2">text2: </p>
+		
+		<script type="text/javascript">
+		
+			// testing a single-line comment
+			alert("Calling document.getElementById(text).innerHTML to display the contents of the \
+			field with the id of text in a pop up alert box. The text is : " + document.getElementById("text").innerHTML);
+
+			/*
+			multi-line comments
+			*/		
+			alert("Using document.getElementById(text2).innerHTML=... to set the display of the text2 id");
+			document.getElementById("text2").innerHTML="text2: Setting this field by using javascript";
+
+		</script>
+		
+	</div>
+
+</body>
+	<hr />
+	<p><a href="../index.html">..HOME..</a></p>
+</html>

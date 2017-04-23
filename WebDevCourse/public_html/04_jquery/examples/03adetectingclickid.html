@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+    <title>04 Detecting A Click by ID</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Ch 04 Detecting a Click By ID" />
+	
+	<script type="text/javascript" src="../js/jquery_300_min.js"></script>
+	
+	<style>
+	
+		.redsquare {
+			width: 100px;
+			height:100px;
+			background-color:red;
+			margin:10px;
+		}
+	
+		#greencircle {
+			width: 100px;
+			height:100px;
+			background-color:green;
+			border-radius:100px;
+		}
+	
+	</style>
+	
+</head>
+ 
+<body> 
+
+	<h1>Ch 04. Detecting a Click Using IDs and Classes</h1>
+
+	<div>
+		<p>
+			Click on any of the objects to see the jQuery click function in action. 
+			This example uses the object IDs and CLASSes in the jQuery.click call.
+		</p>
+	</div>
+
+	<div class="redsquare"></div>
+	<div id="greencircle"></div>
+	<div class="redsquare"></div>
+
+	<script>
+	
+		$("#greencircle").click(function() {			
+			alert("#circle click !!");
+		})
+	
+		$(".redsquare").click(function() {			
+			alert(".square click !!");
+		})
+	
+	</script>
+
+
+</body>
+	<hr />
+	<p><a href="../index.html">..HOME..</a></p>
+</html>

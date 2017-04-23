@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <title>04 Fading Content</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Ch 04 Fading Content" />
+	
+	<script type="text/javascript" src="../js/jquery_300_min.js"></script>
+	
+	<style>
+	
+	</style>
+	
+</head>
+ 
+<body> 
+
+	<h1>Ch 04. Fading Content</h1>
+	
+	<div>
+		<p id="texttofade">Here is some initial text that will fade when the button below gets pressed</p>
+	</div>
+
+	<div>
+		<button id="fadeOutButton">Click me to fade out the above text in 500 milliseconds...</button>
+	</div>
+
+	<div>
+		<button id="fadeOutFastButton">Click me to fade out the above text in 2 seconds...</button>
+	</div>
+
+	<div>
+		<button id="fadeInButton">Click me to fade in the above text...</button>
+	</div>
+
+	<div>
+		<br><p><a href="http://api.jquery.com/fadeout/" target="_blank">jQuery fadeOut reference docs</a></p>
+	</div>
+
+	<script>
+	
+		$("#fadeOutButton").click(function() {
+			$("#texttofade").fadeOut(500);
+		});
+	
+		$("#fadeOutFastButton").click(function() {
+			$("#texttofade").fadeOut(2000, function() {
+				alert("fadeOut complete - callback fcn called");
+			});
+		});
+	
+		$("#fadeInButton").click(function() {
+			$("#texttofade").fadeIn();
+		});
+	
+	</script>
+
+
+</body>
+	<hr />
+	<p><a href="../index.html">..HOME..</a></p>
+</html>

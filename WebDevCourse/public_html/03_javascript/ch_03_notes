@@ -1,0 +1,138 @@
+Uses : https://www.ecowebhosting.co.uk/cp/webdevcourse
+
+b***zee@*c*d.com
+9##B********r
+
+- Create Hosting Packages
+    domain name : bobz.com
+    Select Hosting Package : Advanced - Unlimited (Linux)
+
+- Manage Hosting Packages
+    click on above - brings you to ‘Control Panel’
+
+Chapter 03 - Javascript
+=======================
+
+create a button using <button> html tags
+assign the javascript action “onclick” to it
+	- onclick=alert(“Hi there”)
+when user clicks on the button - the javascript alert function pops up message
+
+embedding javascript on the HTML page is ok for quick-dirty small pages
+
+MUCH better is to separate out the javascript to separate locations/pages/files
+
+<script> tag tells browser JS is @ to be executed
+	- <script type=“text/javascript”> - is the usual format
+	instructions in between tags are executed as soon as page is loaded - unless otherwise directed
+
+internal scripts are traditionally placed immediately before the ending </head> or </body> tags
+
+when the JS files are separate files - need a way to link the controls being accessed to the JS
+
+use classes and ids tags the same way as used in css	
+
+primarily use “ids” as they identify individual elements - most JS operates on single elements
+	- but can also have it act on classes - depends on how complicated you wish to make it
+
+IDS - CANNOT have more than 1 ELEMENT on single HTML page with the same ID
+
+DOCUMENT
+========
+	‘document’ refers to the entire web page being displayed
+	perform different functions on the document
+	eg. ‘getElementById(“idName”)’ - will access the field on current page with ‘id=“idName”’
+	once you have that - can do more actions
+		eg, .innerHTML - this gets the actual text from that field
+	can perform all kinds of actions on the document.* fields
+		- get text from them = getElementById
+		- change contents of displayed fields - use .innerHTML=“new text” to change
+
+	use // for single line comments
+	use /* */ for multi-line comments
+
+	CAN ONLY USE THESE WITHIN THE <script> tags 
+
+	document.getElementById(”id”) - used a LOT - depending on what it is determines what else
+		can be done on that element, text fields can be changed, buttons can process clicks
+		
+	being able to do this now introduces the ability of interacting with a website and 
+		performing actions when a button is clicked
+
+	refer to the manuals to discover all the possible function calls
+
+Variables
+=========
+	use keyword ‘var’ inside a script
+	stores 1 value at a time
+	when using variables, when you want to assign the content of a field, use
+		myVar=document.getElementById(“elementID”).value;
+	when setting an element, use
+		document.getElementById(“elementID”).innerHTML=myVar;
+	integers / numerics
+		can perform basic math operations using standard symbols
+	more complicated Math functions contained within a standard Javascript “Math” library
+		eg, alert(Math.pow(x,3)); — where x=5 same as 5 cubed
+	create a random number by
+		Math.random - this is a random value but less that 1
+		need to perform additional operations on it in order to
+		Math.floor - rounds down, returns a whole number
+
+Arrays
+======
+	store multiple values in 1 variable
+		var myArray = new Array();
+		0-based index
+		myArray[0]=“pizza”
+			or
+		myArray=[“snow”,”rain”,”fog”]
+		
+	can be used to store unlimited number of elements, eg, strings, DIV IDs
+
+	use the console.log utility to display contents of vars while executing
+		console.log accessible in any browser - usually thru Developer Tools
+
+	useful for debugging
+
+	functions on arrays
+		push - add elements to end of an array
+		splice - remove or add elements from an array
+			splice(idx,numToRemove) - start at idx and remove # elements
+			splice(idx,0,”strToAdd”) - start at idx, remove 0 elements, add “strToAdd”
+				can add multiple elements, separated by commas
+		myArray.length = get # of elements
+
+IF STATEMENTS
+=============
+	use double == to test for equality
+	use single = for assignations
+	format
+		if (condition) {
+			when condition evaluates to true, do this code
+		} else {
+			else do this code
+		}
+
+FOR LOOPS
+=========
+	for (var i=1; i<limit; i++)
+		set initial value, upper limit and count to limit
+		count to limit can be + or -
+	
+
+WHILE LOOPS
+===========
+	Pretty much like a FOR loop, few minor changes
+	init starting value before WHILE keyword
+	move counter to inside the loop
+	things to keep eye on
+		make sure loop doesn’t go forever
+
+FUNCTIONS
+=========
+	used to compress code and making it easier to manage
+	keyword ‘function’ followed by a name
+	when you are inside a function that was started with something like
+		document.getElementById(“element”) - if you have to refer to 
+		the same “element” inside that fun, you can shorthand it by 
+		using “this.”

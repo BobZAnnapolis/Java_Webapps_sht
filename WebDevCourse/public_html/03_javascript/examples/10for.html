@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <title>03 JS FOR LOOPS</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Chapter 03 Javascript FOR LOOPS" />
+
+</head>
+ 
+<body> 
+
+	<h1>Javascript FOR LOOPS</h1>
+
+	Refresh the page to see FOR loops in action.<br>
+
+	Display the concatenated array info here:<br>
+	<p id="arrayString"></p>
+
+	<script type="text/javascript">
+
+		var arrayString="";
+
+		var myArray=["pizza","chocolate","vodka"];
+
+		for (var i=0; i<myArray.length; i++) {
+		
+			alert(myArray[i]);
+			
+			arrayString=arrayString+myArray[i]+" ";
+			console.log(arrayString);
+		
+		}
+
+		document.getElementById("arrayString").innerHTML=arrayString;
+
+	</script>
+				
+</body>
+	<hr />
+	<p><a href="../index.html">..HOME..</a></p>
+</html>

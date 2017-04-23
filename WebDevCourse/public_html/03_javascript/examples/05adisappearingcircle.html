@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <title>03 Disappearing Circle</title>
+ 
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Chapter 03 Disappearing Circle" />
+
+	<style>
+	
+		#circle {
+			width:200px;
+			height:200px;
+			border-radius:100px;
+			background-color:red;
+		}
+	
+	</style>
+
+</head>
+ 
+<body> 
+
+	<h1>Disappearing Circle</h1>
+
+	<div>
+		
+		<div>
+			This website uses css and javascript to initially display a red circle
+			and then it disappear when the button is pressed.
+		</div>
+
+		<p>
+			<div id="circle"></div>
+		</p>
+
+		<button id="circleKiller">Press this button to make the circle disappear...</button/>
+
+		<script type="text/javascript">
+		
+			document.getElementById("circleKiller").onclick=function() {
+			
+				document.getElementById("circle").style.display="none";
+				
+			}
+
+		</script>
+		
+	</div>
+
+</body>
+	<hr />
+	<p><a href="../index.html">..HOME..</a></p>
+</html>
