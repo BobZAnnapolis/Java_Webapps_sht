@@ -1,0 +1,281 @@
+Git & GitHub
+============
+
+git clone https://github.com/udacity/asteroids
+
+git version
+
+git init = init a new repository
+git clone http://_repo_nm = get latest version of a git project from specific repo
+
+git add fnames = add modified files to staging dir
+git commit -m "comment" = move modified files from staging dir into repositories
+
+git checkout master = get latest version - only makes sense to do this after you have 
+	originally cloned a project	or have checked out a non-master branch
+git checkout UID - check out a specific version of the code - UID r long - easier w/branches [see below]
+
+git status = status of all files in current working dir & project
+git log  = history of all commits for current version of project
+
+git diff = difference of files in working dir versus staging dir
+git diff --staging = difference of files in staging dir and latest in repository
+git diff commit_1 commit_2 = difference of files between the 2 commit ids
+
+git show commit_UID - compares a commit id to its parent - this is useful AFTER a
+	MERGE has occurred - because merged branches add commits by timestamp BUT these
+	timestamps might have occurred on different branches . . . SO . . . doing a straight
+	git diff between 2 commit_ids that appear in a 'git log' might show a LOT of changes
+	because they could be comparing code changes that occurred on different code/branch 
+	paths; by using the above command, this just does diffs between files on the same branch;
+
+================================================================================================
+================================================================================================
+
+Branching
+=========
+used to create separate from the master development paths, eg, implement new functionality, create
+	a new version of the same functionality [ie a foreign language version]
+instead of having to remember the long commit UIDs - can create human-readable labels, ie, branches
+some names are reserved
+	- 'master' = latest 'branch' in most repositories
+	- "DETACHED HEAD" - whenever you are working on a non-master unlabelled version of the code, get
+		this when you checkout a commit NOT a branch
+
+"HEAD" means 'the last current commit' in the code you have checked out
+
+each new branch creates its own separate from the master path
+the latest version in each branch is called a "tip"
+"merging" - when you want to move / combine a branch back into the "master"
+
+"git branch" = views current branches
+	- the currently starred branch is the one that code is being modified for
+"git branch branch_name" - create a new branch
+"git branch -d branch_name" - DELETE branch
+	- does NOT delete the commits, just the labels
+"git checkout branch_name" = switch current working_dir to branch_name
+
+"git log --graph --oneline proj_1 proj_2" + shorter display of commits, highlights
+
+git commits know only about its parent, it keeps a reference ptr to prior commit
+
+git log only traverses known commits on the current branch from its current location backwards
+to the 1st commit that doesn't have a prior commit, typically the 1st commit in a project, ie,
+a linked list per-project/branch
+
+"orphaned branches"
+- if you checkout a commit UID, make some changes and commit those, because they don't belong to a
+	named branch, they will be lost
+- if you want to permanently add a change, you should create a branch
+	- git checkout -b new_branch_name
+		- does the same thing as :
+			git branch new_branch_name
+			git checkout branch
+
+			
+"Merging"
+
+- if no changes had been made between "master" and another branch, instead of an actual merge,
+	it makes sense to just make the branch name the new "master"
+
+- but when there are code changes made in both paths, a "merge" operation has to be performed
+
+- git merge master branch_name -m "Merging branch into master"
+	- whenever merging, you almost always want to merge a branch into the master
+
+- 'commits' are added to final branch in order of timestamp
+
+================================================================================================
+================================================================================================
+
+Lesson 3 - GitHub
+
+- up to this point, the "normal" sequence of actions has been :
+	- mkdir dev_dir
+	- cd dev_dir
+	- git .init		<- this creates a local git repository /project called 'dev_dir'
+	- git add fnX	<- add modified files into staging area
+	- git commit -m "comment"		<- save all changes into the local repo
+	- SIDEBAR : During development, you might want to test out new functionality, do so using "branches:, "git branch branch_name" 
+			to check changes into a branch, you would :
+				- git branch branch_nm
+				- git checkout branch_nm    [or in 1 step -> 'git checkout -b branch_nm'
+				- then do above dev steps
+				- ur commits will go into the current branch
+					- u find out which branch u r currently working in with a 'git branch' command - the starred 1 is the current 1st
+				- bounce around between multiple branches by doing "git checkout br_nm"
+		
+- https://github.com/  - main site
+	- makes it easy to share repositories w/other people
+	- open source, web access
+
+- get an account
+- repositories
+	- public [free] or private [charge a fee]
+
+- use "git clone" to move existing repos from GitHub locally
+	- use all same commands learned above to modify the local repository
+	- when you want to share with others or save on the web, you'll need to use more command line tools to move the repo up
+		- you'll need to move your public SSH key into your GitHub account
+
+- up to now everything has been interacting w/local repos, when you use GitHub, you have to associate your local repo with the one
+on GitHub, the repos on GitHub are called "remotes"
+	- performing a "git clone https://..." automatically creates a remote connection
+		
+- maintaining ur own shit locally and on the web is pretty easy, when you start sharing repos with others and/or have multiple people making
+changes is when it starts getting hairy and you have to start worrying about keeping local & web repos in sync
+
+SYNCING REPOSITORIES
+====================
+- sync'ing between local & GitHub repos is done via :
+	- establishing a "remote" connection between a local repo and GitHub
+		- if you've done a "git clone ..." - a repo exists on the GitHub and a local "remote" is auto-created for you
+			- "git remote" - see all remotes u have a connection with
+			- "git branch -a" - see all branches associated with the current 'remote' repo
+	- executing push / pull / fetch commands keep local & remote repos in sync
+
+- if you've done everything locally, then you need to move ur local info up to the web
+	- web : get a GitHub a/c
+	- web : move ur SSH keys into your a/c
+	- web : go into your GitHub account 
+		- create an empty repo with the same name as your local repo/project [doesn't have to be, is just easy]
+			- IF YOU HAVE done ANY local commits, DO NOT create a README - adding a README file will create
+				a dummy file and perform a commit - this gets your local repo and the GitHub repo out of sync
+	- local : execute a "git remote add FQDN" to above repo
+			- "name" - use "origin" - if there is only 1 
+				- this is standard practice as well as what a "git clone FQDN" usually does
+	- a "link" has now been established between ur local repo and ur GitHub repo
+		- passing information back and forth is now done via push, pull, fetch
+			- you "push" data UP into the GitHub remote from your local branch
+			- you "pull / fetch" GitHub branch data DOWN into your local repo
+		- "git push into_remote_name from_local_branch"
+			- get remote names by doing "git remote"
+			- get current branch names by doing "git branch"
+		- git pull from_remote_name into_local_branch"
+			
+- web : on GitHub, clicking on the "commits" link is the same as running
+	"git log" from the command line
+	
+- web : on GitHub - you can also modify files on the website - but keep in mind, ANY changes
+	made on the website automatically get your local version out of sync
+	- this is when you have to pull changes down from the website into your local repo
+
+- a "remote" in your local repository is basically a reference to another repository, usually in GitHub
+- "push / pull" operates on remotes on branches
+	- "push"  takes the local branch info and pushes it into a remote repo
+	- "pull" pulls branch info from a remote repo and puts it into ur local repo w/that branch name
+	
+- "branch"  = default name = 'master'
+- "remote" = default name = 'origin'
+	
+- web : "forking" - creating a new repository right on GitHub for others to use. Otherwise, you would
+		have to :
+		- locally : clone an existing GitHub repo locally
+		- web : create an empty corresponding GitHub repo in your own area
+		- locally : create a remote pointing to ur newly created repo
+		- locally : push ur locally cloned repo up
+		- these actions create copies of the original
+		- this would have to be done for each person wanting to work from that repo
+		
+- "fork" an existing repository and have it appear in your own area
+- "forking" is the same thing as cloning except it is done between GitHub web locations
+
+- "forking" makes it easy to stay connected with the original project - if we did the steps above
+	by cloning and moving into our own repo, any changes we did would only occur to our code in
+	our repo - if this was a feature we wanted in the original, there would have to be a lot
+	of code flying around to make this happen; by "forking", we stay connected with the original
+	project
+	
+			"Why not clone and branch ?"
+			
+- "branching" works on a single repository
+- "cloning" works on repos either going from GitHub -> locally, or cloning repos on a local machine
+- "forking" works ONLY on GitHub
+
+- web : when you “fork” someone else’s repository. it brings you back to your GitHub page and adds the repo
+	into your area; there is also an ID indicating that it was forked;
+
+- to add people as collaborators, in the GitHub repo, select "Settings" on the far right-hand side,
+	click "Collaborators" on the left and enter the GitHub usernames of the people you want to give
+	access to
+
+Where was your commit?
+Before you run a git push, change should have only existed locally via git log. Commits will not automatically be shared to remotes - you have to manually push your branch if you want to share changes.
+
+After you ran git push, your change should have existed locally and on your fork. It should not have existed on Larry's repository, which is the repository you forked. The reason you forked in the first place is because you don't have permission to change Larry's repository!
+
+- update the local copy of a 'remote' by performing "git fetch branch_name", eg. do this if you might
+	be off-line for a while so that you can work with the latest
+
+Conflicting Collaboration - i.e., GitHub and local repos getting out of sync; problem increases as more people clone
+and modify original repo;
+
+- when the GitHub and local repos are out of sync, AND you want to keep the changes in both places, you will have to 
+essentially do a merge, add, commit, push to keep everything in synch;
+
+- git maintains a local copy of all the commits since the last push / pull;
+
+- in order to get a local copy of ALL the changes that have been made to a GitHub repo, you should do a
+“git fetch remote_name” or “git fetch” - this pulls down all the changes from GitHub, including any branches to your local
+machine; 
+
+- if you know you are interested in a particular branch, specify just that branch name on the fetch request;
+
+"git branch -a" 
+* master
+	remotes/origin/HEAD -> origin/master
+	remotes/origin/master
+	
+the ‘-a’ shows all the local branches git knows about, ie, "* master" is the one currently being worked on plus local copies of the remote branches
+
+- IF changes have been made to the remote and you haven’t updated your local versions yet - “git fetch” to get all the 
+different branches and then do git diffs and git logs to see the changes;
+
+- when working w/GitHub and there are changes between your local version, i.e. “master” and the GitHub version, i.e. “origin/master”, when you do a “fetch” what happens is the GitHub version is brought down and an “origin\master” branch is created, your “master” branch stays the way it was and a “merge” happens between what you brought down with your local version and that becomes the new “master” - if there are any merge conflicts, you have to resolve them before being able to do a push - in this way, you have all of the remote GitHub changes so that local branch and GitHub are in synch and now the only changes are your local ones;
+
+- to see commits on different branch - specify branch name after “git log” - defaults to using ‘master’
+
+"fast-forward merges"
+	- if the branch you are merging into is an ancestor of the branch you are merging from
+	- when dealing with branches, a fast forward merge is when you combine 2 branches by moving a label forward - can only be done if 1st an be reached from by 2nd
+	- commit <-- commit a <-- commit <-- commit <-- commit b
+	- if you can reach 'a' from 'b' you can perform a fast-forward merge
+	ok to do if the branch u r merging into is an ancestor of the branch you are merging from
+
+
+“Getting feedback from a change before changing the master branch”
+
+- GitHub : “pull requests” - created on repos - used to help collaborators check changes before merging into master
+	- create the branch you want to make the changes in
+	- make the changes
+	- add the file into staging dir
+	- commit the changes
+	- push up to original from local branch
+
+- to create a pull request
+	- go to the repo
+	- select the branch
+	- select “pull request”
+		- by default, it assumes you want to merge into the original repository
+		- change this by selecting ‘edit’ and choosing the correct master
+		- then “create”
+- once it is created, other users can use GitHub to see a list of existing “Pull Requests” to examine changes
+
+- called “pull requests” because they are usually created by other users that want the “owner” of the repo to
+	“pull” their changes into the master branch
+
+- if requested changes have no conflicts with the master branch a “Merge Pull Request” button should appear
+	and be able to be selected without issue[s]
+
+
+NOTE : Selecting “Merge” ON GITHUB won’t perform a fast-forward merge on branches that qualify. Remember that a fast-forward
+	merge essentially just removes the old label and moves ‘master’ to the new location. But when it is done on GitHub,
+	a new commit is created and the changes are put into that new ‘master’ location.
+
+- in a collaborative environment, you almost always want to use PULL REQUESTS to check out changes and then leave it up to the
+	project owner to perform the merge.
+	- workflow would be to always do stuff on your branch, add & commit your branch, create a pull request
+		- if there were additional changes made to the master 
+		- you would then have to bring down those latest changes, merge them into your branch, commit & push that
+		- that will update the pull request to indicate that it is in synch with the latest master up there
+			so that only the changes in the branch need to be reviewed

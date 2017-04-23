@@ -1,0 +1,43 @@
+Lesson 03
+=========
+
+GitHub
+======
+
+When would you want to create a remote repository rather than keeping all your work local ?
+
+  If you know you are going to have / need multiple people accessing the same repo.
+
+Why might you want to always pull changes manually rather than having Git automatically stay up-to-date
+with your remote repository ?
+
+	This behaviour will make sure that ANY changes in files in the repo will not be accidentally
+	over-written.
+	
+Describe the differences between forks, clones, and branches. When would you use one instead of another?
+
+	"Forks" - only operates on repos on GitHub.
+	"Clones" - makes local copies of repos from GitHub or locally.
+	"Branches" - only works on 1 repo
+	
+	"Forks" - allows collaboration among many people, visible on GitHub
+	"Clones" - creates a local copy, not accessible on GitHub
+	"Branches" - preserves the last committed workgroup
+	
+What is the benefit of having a copy of the last known state of the remote stored locally?
+
+	It will allow you to work off-line knowing that you had the last known sync'd versions and
+	depending on how many changes are made by the time you attempt the next push, it could cut down
+	on the number of merge conflicts.
+	
+How would you collaborate without using Git or GitHub? What would be easier, and what would be harder?
+
+	Collaboration requires frequent communication no matter tool is being used. 
+	GitHub's free web-based functionality makes it easy for development to occur anywhere on the globe cheaply.
+	Collaborative development increases in difficulty as you add more people, the project functionality grows in code size, and/or people working on the same code areas will make any project difficult when merging changes in.
+	
+When would you want to make changes in a separate branch rather than directly in master? What benefits does each approach have?
+
+	Separate branch : To be safe, as well as anal, anytime you have more than 1 person working out of the same repo, OR you want to implement a new feature OR you want to solely use the origin/master repo onGitHub as the representation of the “most latest up-to-date working version that people can use” - create a separate branch, do everything on that and use pull requests to handle the merging backing GitHub.
+	Master : unimportant projects, projects with only 1 person
+	Benefits : Branches protect the ‘master’ as well as possibly allowing the creation of ‘versioned’ releases; 1 Master has low overhead, easier to maintain and update.

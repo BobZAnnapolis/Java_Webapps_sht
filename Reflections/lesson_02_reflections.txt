@@ -1,0 +1,52 @@
+What happens when you initialize a repository? Why do you need to do it?
+
+	It creates an initial "slate" or log for the files and actions that you are going
+	to be executing with the files in this directory. You need to do it so that future 
+	git operations are set up properly.
+
+How is the staging area different from the working directory and the repository? What value 
+do you think it offers?
+
+	The working directory is just that, a place for in-progress code and 'working' 
+	out new functionality or fixes for bugs. The files are in constant flux as code 
+	changes are made. The staging area can be considered, or used as, a temporary 
+	"holding area" for those files that you 'think' you might implement some 
+	functionality or fix a bug. If you think you are no longer going to change a 
+	file, but still have other files that are part of the same change, move the 
+	ones you are done with into the staging area to temporarily "save" them while 
+	you continue to work on and modify the other files.
+	
+How can you use the staging area to make sure you have one commit per logical change?
+
+	By using a combination of "git add" and "git diff", you can keep track of 
+	which files you want to group into a single commit.
+	
+What are some situations when branches would be helpful in keeping your history organized? 
+How would branches help?
+
+	[2nd q] The "master" version will never be compromised when working on a branch.
+	[1st q] Branches help identify the area[s] you have to search when looking 
+		for specific changes, problems, etc - speeds up the investigation process.
+	
+How do the diagrams help you visualize the branch structure?
+
+	1] Because they actually look like a tree, it's easy to understand the 
+		concept of branches.
+	2] It's also easy to see how a 'commit point' will either be "remembered" 
+		or "forgotten" depending on whether it is on a named branch or an 
+		unnamed commit point.
+		
+What is the result of merging two branches together? 
+Why do we represent it in the diagram the way we do?
+
+	1] 1 final "good" branch with the changes from BOTH branches all in 1 place
+	2] To easily see where/how the final merged branch was created
+	
+What are the pros and cons of Git’s automatic merging vs. always doing merges manually?
+
+	Automatic PRO : When there are no discrepancies or code overlap, makes the 
+			process easy.
+	Manual    PRO : Makes sure overlapped code discrepancies are discussed.
+	Manual    CON : Extends the process.
+	Automatic CON : Assumes everyone is taking a leap of faith that all changes 
+			are "good".
