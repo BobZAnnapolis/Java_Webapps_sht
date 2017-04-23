@@ -1,0 +1,30 @@
+  	h1 	{
+  			color : rgb(155,70,150);
+  			font-family: Georgia, Times, serif;
+  			font-size: 2em;
+  			text-align: center;
+  			font-variant: small-caps;
+  		}
+  	h2 	{
+  			color : rgb(10,50,100);
+  			font-family: Georgia, Times, serif;
+  			font-size: 1.25em;
+  			text-tramsform: uppercase;
+  		}
+  	p 	{
+  			color : rgb(0,0,185);
+  			font-family: arial, verdana, sans-serif;
+  			font-size: .75em;
+  			text-align: justify;
+  			text-indent: 20px;
+  		}
+  	#footer
+  		{
+  			font-family: arial, verdana, sans-serif;
+  			font-size: .5em;
+  			text-decoration: overline;
+  		}
+  	.smaller
+  		{
+  			font-size: .65em; 
+  		}
